@@ -37,8 +37,8 @@ $database = new Database(
     DB_PORT
 );
 
-$database->getConnection();
+$gateway = new ProductGateway($database);
 
-$controller = new ProductController();
+$controller = new ProductController($gateway);
 
 $controller->processRequest($_SERVER['REQUEST_METHOD'], $id);
